@@ -12,7 +12,7 @@ var https = require('https');
 var argv = minimist(process.argv.slice(2), {
     default: {
         as_uri: 'https://localhost:8443/',
-        ws_uri: 'ws://192.168.99.100:8888/kurento'
+        ws_uri: 'ws://localhost:8888/kurento'
     }
 });
 
@@ -78,7 +78,7 @@ wss.on('connection', function(ws) {
     ws.on('message', function(_mensagem) {
         var mensagem = JSON.parse(_mensagem);
         console.log('Conexão ' + idSessao + ' recebeu a mensagem', mensagem);
-        
+
         // identifica o tipo da mensagem recebida
         switch (mensagem.id) {
         case 'mensagem-chat':
